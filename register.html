@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="./styles/auth.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="auth-card">
+        <!-- Icon Header -->
+        <div class="text-center">
+            <div class="brand-badge">
+                <i class="bi bi-person-plus"></i>
+            </div>
+            <h1 class="card-title">Create account</h1>
+            <p class="card-subtitle">Start organizing your tasks in seconds</p>
+        </div>
+
+        <!-- Form -->
+        <form action="#" method="POST">
+            <!-- Full Name -->
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                    <input type="email" id="email" class="form-control" placeholder="name@example.com" required>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+                <label for="regPassword" class="form-label">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" id="regPassword" class="form-control" placeholder="Create a password"
+                        required>
+                    <button type="button" class="btn-toggle-pw" id="toggleRegPassword">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-2">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-shield-check"></i></span>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Re-type your password"
+                        required>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-yellow">Sign Up</button>
+
+            <!-- Log In Direct Link -->
+            <p class="bottom-link">
+                Already have an account? <a href="login.html">Log in here</a>
+            </p>
+        </form>
+    </div>
+
+    <script>
+        const toggleRegPassword = document.getElementById('toggleRegPassword');
+        const regPasswordInput = document.getElementById('regPassword');
+
+        toggleRegPassword.addEventListener('click', function () {
+            const type = regPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            regPasswordInput.setAttribute('type', type);
+            this.querySelector('i').classList.toggle('bi-eye');
+            this.querySelector('i').classList.toggle('bi-eye-slash');
+        });
+    </script>
+
+</body>
+
+</html>
