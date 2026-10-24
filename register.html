@@ -24,7 +24,7 @@
         </div>
 
         <!-- Form -->
-        <form action="#" method="POST">
+        <form id="registerForm" novalidate>
             <!-- Full Name -->
             <div class="mb-3">
                 <label for="name" class="form-label">Full Name</label>
@@ -48,8 +48,7 @@
                 <label for="regPassword" class="form-label">Password</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                    <input type="password" id="regPassword" class="form-control" placeholder="Create a password"
-                        required>
+                    <input type="password" id="regPassword" class="form-control" placeholder="Create a password" required>
                     <button type="button" class="btn-toggle-pw" id="toggleRegPassword">
                         <i class="bi bi-eye"></i>
                     </button>
@@ -61,8 +60,7 @@
                 <label for="confirmPassword" class="form-label">Confirm Password</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-shield-check"></i></span>
-                    <input type="password" id="confirmPassword" class="form-control" placeholder="Re-type your password"
-                        required>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Re-type your password" required>
                 </div>
             </div>
 
@@ -75,18 +73,7 @@
             </p>
         </form>
     </div>
-
-    <script>
-        const toggleRegPassword = document.getElementById('toggleRegPassword');
-        const regPasswordInput = document.getElementById('regPassword');
-
-        toggleRegPassword.addEventListener('click', function () {
-            const type = regPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            regPasswordInput.setAttribute('type', type);
-            this.querySelector('i').classList.toggle('bi-eye');
-            this.querySelector('i').classList.toggle('bi-eye-slash');
-        });
-    </script>
+<script src="./scripts/register.js"></script>
 
 </body>
 

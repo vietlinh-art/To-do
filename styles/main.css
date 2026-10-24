@@ -1,0 +1,50 @@
+/* Smooth scrolling for navigation clicks */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset page content so it doesn't hide behind the fixed navbar */
+body {
+  padding-top: 76px;
+}
+
+/* Carousel Banner */
+.carousel-item {
+  height: 75vh;
+  min-height: 420px;
+}
+
+.carousel-item img {
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.65); /* Keeps text easily readable over food photos */
+}
+
+/* Section heading underlines */
+.section-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #ffc107; /* Bootstrap gold color */
+  border-radius: 2px;
+}
+
+/* Menu card hover effect */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}

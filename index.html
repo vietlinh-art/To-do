@@ -1,11 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bistro Delight - Restaurant</title>
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-    
+
+<!-- ScrollSpy enabled on body -->
+<body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-offset="80" tabindex="0">
+
+  <!-- ================= NAVBAR ================= -->
+  <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+    <div class="container">
+      <!-- Logo / Brand -->
+      <a class="navbar-brand fw-bold text-warning" href="#home">
+        <i class="bi bi-cup-hot-fill me-2"></i>Bistro Delight
+      </a>
+
+      <!-- Hamburger button for mobile -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarContent"
+        aria-controls="navbarContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <!-- ScrollSpy nav links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#menu">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contacts</a>
+          </li>
+        </ul>
+
+        <!-- Search Bar -->
+        <form class="d-flex me-3 my-2 my-lg-0" role="search" onsubmit="event.preventDefault();">
+          <div class="input-group">
+            <input
+              class="form-control form-control-sm"
+              type="search"
+              placeholder="Search dishes..."
+              aria-label="Search"
+            />
+            <button class="btn btn-warning btn-sm" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+
+        <!-- Dynamic Auth Area -->
+        <!-- 1. Shown if NOT logged in (links to your login page) -->
+        <div id="loggedOutNav" class="d-flex align-items-center">
+          <a href="login.html" class="btn btn-outline-warning btn-sm">
+            <i class="bi bi-person-circle me-1"></i> Log In
+          </a>
+        </div>
+
+        <!-- 2. Shown if ALREADY logged in -->
+        <div id="loggedInNav" class="d-none align-items-center gap-2">
+          <span id="greetingText" class="text-light fw-semibold small"></span>
+          <button id="logoutBtn" type="button" class="btn btn-danger btn-sm">
+            <i class="bi bi-box-arrow-right me-1"></i> Log Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= CAROUSEL BANNER ================= -->
+  <section id="home">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <!-- Indicators -->
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+
+      <!-- Slides (replace src images as needed) -->
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="4000">
+          <img
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80"
+            class="d-block w-100"
+            alt="Warm Restaurant Atmosphere"
+          />
+          <div class="carousel-caption d-flex flex-column justify-content-center h-100 pb-0">
+            <h1 class="display-4 fw-bold">Welcome to Bistro Delight</h1>
+            <p class="lead">Fresh daily ingredients crafted with passion.</p>
+            <div>
+              <a href="#menu" class="btn btn-warning btn-lg fw-semibold px-4 me-2">Explore Menu</a>
+              <a href="#contact" class="btn btn-outline-light btn-lg px-4">Contact Us</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="4000">
+          <img
+            src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80"
+            class="d-block w-100"
+            alt="Fresh Pasta Dish"
+          />
+          <div class="carousel-caption d-flex flex-column justify-content-center h-100 pb-0">
+            <h1 class="display-4 fw-bold">Artisanal Italian Flavors</h1>
+            <p class="lead">Hand-rolled pasta and authentic recipes.</p>
+            <div>
+              <a href="#menu" class="btn btn-warning btn-lg fw-semibold px-4">See Dishes</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="4000">
+          <img
+            src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1600&q=80"
+            class="d-block w-100"
+            alt="Steak Dinner"
+          />
+          <div class="carousel-caption d-flex flex-column justify-content-center h-100 pb-0">
+            <h1 class="display-4 fw-bold">Grilled to Perfection</h1>
+            <p class="lead">Prime cuts seared over open fire.</p>
+            <div>
+              <a href="#contact" class="btn btn-warning btn-lg fw-semibold px-4">Find Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-label="Previous"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-label="Next"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT SECTION ================= -->
+  <section id="about" class="py-5 bg-light">
+    <div class="container text-center py-4">
+      <h2 class="section-title fw-bold mb-3">About Us</h2>
+      <p class="text-muted mx-auto" style="max-width: 680px;">
+        Bistro Delight brings a cozy neighborhood dining together with world-class recipes.
+        Whether you are meeting friends for lunch or taking out for dinner, we take pride
+        in every single plate we serve.
+      </p>
+    </div>
+  </section>
+
+ <!-- ================= MENU SECTION ================= -->
+  <section id="menu" class="py-5">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <h2 class="section-title fw-bold">Popular Specials</h2>
+        <p class="text-muted">Take a look at what our guests love most.</p>
+      </div>
+
+      <!-- The JavaScript will insert the 20 recipe cards inside this row -->
+      <div id="menu-container" class="row g-4">
+        <div class="col-12 text-center text-muted">
+          <div class="spinner-border text-warning" role="status"></div>
+          <p class="mt-2">Loading menu items...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACTS FOOTER ================= -->
+  <footer id="contact" class="bg-dark text-white pt-5 pb-3">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <!-- Restaurant Info -->
+        <div class="col-lg-4 col-md-6">
+          <h5 class="text-warning fw-bold mb-3">
+            <i class="bi bi-cup-hot-fill me-2"></i>Bistro Delight
+          </h5>
+          <p class="text-secondary small">
+            Fresh flavors and great memories. Drop by for a bite or reach out to reserve your spot!
+          </p>
+          <div class="d-flex gap-3 fs-5">
+            <a href="#" class="text-white text-decoration-none"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white text-decoration-none"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white text-decoration-none"><i class="bi bi-twitter-x"></i></a>
+          </div>
+        </div>
+
+        <!-- Contact List -->
+        <div class="col-lg-4 col-md-6">
+          <h5 class="text-warning fw-bold mb-3">Contact Information</h5>
+          <ul class="list-unstyled text-secondary small mb-0">
+            <li class="mb-2">
+              <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+              123 Food Street, Downtown, ST 56789
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-telephone-fill text-warning me-2"></i>
+              +84 (111) 012-345698
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-envelope-fill text-warning me-2"></i>
+              hello@bistrodelight.com
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-clock-fill text-warning me-2"></i>
+              Mon - Sun: 10:00 AM - 10:00 PM
+            </li>
+          </ul>
+        </div>
+
+      <hr class="border-secondary" />
+
+      <div class="text-center text-secondary small">
+        <p class="mb-0">&copy; Bistro Delight. Built with Bootstrap 5.3.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- Custom JavaScript -->
+  <script src="./scripts/home.js"></script>
 </body>
 </html>
