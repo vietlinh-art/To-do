@@ -65,13 +65,15 @@
         </ul>
 
         <!-- Search Bar -->
-        <form class="d-flex me-3 my-2 my-lg-0" role="search" onsubmit="event.preventDefault();">
+        <form id="searchForm" class="d-flex me-3 my-2 my-lg-0" role="search">
           <div class="input-group">
             <input
+              id="searchInput"
               class="form-control form-control-sm"
               type="search"
               placeholder="Search dishes..."
               aria-label="Search"
+              required
             />
             <button class="btn btn-warning btn-sm" type="submit">
               <i class="bi bi-search"></i>
@@ -80,14 +82,14 @@
         </form>
 
         <!-- Dynamic Auth Area -->
-        <!-- 1. Shown if NOT logged in (links to your login page) -->
+        <!-- Shown if NOT logged in -->
         <div id="loggedOutNav" class="d-flex align-items-center">
           <a href="login.html" class="btn btn-outline-warning btn-sm">
             <i class="bi bi-person-circle me-1"></i> Log In
           </a>
         </div>
 
-        <!-- 2. Shown if ALREADY logged in -->
+        <!-- Shown if ALREADY logged in -->
         <div id="loggedInNav" class="d-none align-items-center gap-2">
           <span id="greetingText" class="text-light fw-semibold small"></span>
           <button id="logoutBtn" type="button" class="btn btn-danger btn-sm">
@@ -101,7 +103,6 @@
   <!-- ================= CAROUSEL BANNER ================= -->
   <section id="home">
     <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-      <!-- Indicators -->
       <div class="carousel-indicators">
         <button
           type="button"
@@ -125,7 +126,6 @@
         ></button>
       </div>
 
-      <!-- Slides (replace src images as needed) -->
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="4000">
           <img
@@ -174,7 +174,6 @@
         </div>
       </div>
 
-      <!-- Controls -->
       <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-label="Previous"></span>
       </button>
@@ -189,14 +188,14 @@
     <div class="container text-center py-4">
       <h2 class="section-title fw-bold mb-3">About Us</h2>
       <p class="text-muted mx-auto" style="max-width: 680px;">
-        Bistro Delight brings a cozy neighborhood dining together with world-class recipes.
+        Bistro Delight brings cozy neighborhood dining together with world-class recipes.
         Whether you are meeting friends for lunch or taking out for dinner, we take pride
         in every single plate we serve.
       </p>
     </div>
   </section>
 
- <!-- ================= MENU SECTION ================= -->
+  <!-- ================= MENU SECTION ================= -->
   <section id="menu" class="py-5">
     <div class="container py-4">
       <div class="text-center mb-5">
@@ -204,7 +203,7 @@
         <p class="text-muted">Take a look at what our guests love most.</p>
       </div>
 
-      <!-- The JavaScript will insert the 20 recipe cards inside this row -->
+      <!-- 20 items will be inserted here by scripts/home.js -->
       <div id="menu-container" class="row g-4">
         <div class="col-12 text-center text-muted">
           <div class="spinner-border text-warning" role="status"></div>
@@ -256,6 +255,26 @@
           </ul>
         </div>
 
+        <!-- Message Box -->
+        <div class="col-lg-4 col-md-12">
+          <h5 class="text-warning fw-bold mb-3">Quick Note</h5>
+          <form onsubmit="event.preventDefault(); alert('Message sent!');">
+            <div class="mb-2">
+              <input type="text" class="form-control form-control-sm" placeholder="Your Name" required />
+            </div>
+            <div class="mb-2">
+              <input type="email" class="form-control form-control-sm" placeholder="Your Email" required />
+            </div>
+            <div class="mb-2">
+              <textarea class="form-control form-control-sm" rows="2" placeholder="Your Message..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-warning btn-sm w-100 fw-semibold">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+
       <hr class="border-secondary" />
 
       <div class="text-center text-secondary small">
@@ -271,7 +290,7 @@
     crossorigin="anonymous"
   ></script>
 
-  <!-- Custom JavaScript -->
+  <!-- Custom JavaScript for Index -->
   <script src="./scripts/home.js"></script>
 </body>
 </html>

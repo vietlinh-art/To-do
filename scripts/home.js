@@ -4,16 +4,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const greetingText = document.getElementById("greetingText");
   const logoutBtn = document.getElementById("logoutBtn");
   const menuContainer = document.getElementById("menu-container");
+  const searchForm = document.getElementById("searchForm");
+  const searchInput = document.getElementById("searchInput");
 
-  // 1. Auth check
+  // 1. Check Auth state from localStorage
   function checkAuthState() {
     const savedData = localStorage.getItem("todo_current_user");
 
     if (savedData) {
-      const userObj = JSON.parse(savedData);
-      loggedOutNav.classList.add("d-none");
-      loggedInNav.classList.remove("d-none");
-      greetingText.textContent = "Hi " + userObj.name;
+      try {
+        const userObj = JSON.parse(savedData);
+        loggedOutNav.classList.add("d-none");
+        loggedInNav.classList.remove("d-none");
+        greetingText.textContent = "Hi " + (userObj.name || savedData);
+      } catch (e) {
+        loggedOutNav.classList.add("d-none");
+        loggedInNav.classList.remove("d-none");
+        greetingText.textContent = "Hi " + savedData;
+      }
     } else {
       loggedOutNav.classList.remove("d-none");
       loggedInNav.classList.add("d-none");
@@ -21,23 +29,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Handle Logout
-  logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("todo_current_user");
-    checkAuthState();
-  });
+  // 2. Handle Logout
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("todo_current_user");
+      checkAuthState();
+    });
+  }
 
-  // 2. Fetch 20 recipes from DummyJSON API
+  // 3. Handle Search submission -> redirects to search.html
+  if (searchForm) {
+    searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const query = searchInput.value.trim();
+      if (query) {
+        window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+      }
+    });
+  }
+
+  // 4. Fetch 20 recipes from DummyJSON API
   async function loadMenu() {
+    if (!menuContainer) return;
+
     try {
-      // ?limit=20 tells the API to return exactly 20 items
       const response = await fetch("https://dummyjson.com/recipes?limit=20");
       const data = await response.json();
 
-      // Clear the loading spinner
       menuContainer.innerHTML = "";
 
-      // Loop through each recipe and create a Bootstrap card
       data.recipes.forEach((recipe) => {
         const col = document.createElement("div");
         col.className = "col-md-6 col-lg-4";
@@ -78,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Run on page load
+  // Run on start
   checkAuthState();
   loadMenu();
 });

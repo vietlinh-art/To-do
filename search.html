@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Results - Bistro Delight</title>
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ================= MINIMAL NAVBAR (LOGO + SEARCH + AUTH ONLY) ================= -->
+  <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+    <div class="container">
+      <!-- Logo only (links back to index.html) -->
+      <a class="navbar-brand fw-bold text-warning" href="index.html">
+        <i class="bi bi-cup-hot-fill me-2"></i>Bistro Delight
+      </a>
+
+      <!-- Right Side Controls -->
+      <div class="d-flex align-items-center ms-auto">
+        <!-- Search Bar -->
+        <form id="searchForm" class="d-flex me-3" role="search">
+          <div class="input-group">
+            <input
+              id="searchInput"
+              class="form-control form-control-sm"
+              type="search"
+              placeholder="Search dishes..."
+              aria-label="Search"
+              required
+            />
+            <button class="btn btn-warning btn-sm" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+
+        <!-- Dynamic Auth Area -->
+        <div id="loggedOutNav" class="d-flex align-items-center">
+          <a href="login.html" class="btn btn-outline-warning btn-sm">
+            <i class="bi bi-person-circle me-1"></i> Log In
+          </a>
+        </div>
+
+        <div id="loggedInNav" class="d-none align-items-center gap-2">
+          <span id="greetingText" class="text-light fw-semibold small"></span>
+          <button id="logoutBtn" type="button" class="btn btn-danger btn-sm">
+            <i class="bi bi-box-arrow-right me-1"></i> Log Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= SEARCH RESULTS CONTENT ================= -->
+  <main class="container py-5 my-4">
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+      <div>
+        <a href="index.html" class="text-decoration-none text-warning small">
+          <i class="bi bi-arrow-left me-1"></i> Back to Home
+        </a>
+        <h2 id="searchTitle" class="fw-bold mt-2">Search Results</h2>
+        <p id="searchSubtitle" class="text-muted small mb-0"></p>
+      </div>
+    </div>
+
+    <!-- Search cards inserted by scripts/search.js -->
+    <div id="searchResultsContainer" class="row g-4">
+      <div class="col-12 text-center text-muted py-5">
+        <div class="spinner-border text-warning" role="status"></div>
+        <p class="mt-2">Searching menu...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-dark text-white py-4 mt-auto">
+    <div class="container text-center text-secondary small">
+      <p class="mb-0">&copy; Bistro Delight. Built with Bootstrap 5.3.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- Custom JavaScript for Search -->
+  <script src="./scripts/search.js"></script>
+</body>
+</html>
